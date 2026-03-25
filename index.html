@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счетчики</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        /* Стили для карточки списка */
+        .list-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .list-card:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+        }
+
+        .list-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            color: #333;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .btn-minus {
+            background-color: #ff4d4d;
+        }
+
+        .btn-minus:hover {
+            background-color: #e60000;
+        }
+
+        .btn-plus {
+            background-color: #4cd964;
+        }
+
+        .btn-plus:hover {
+            background-color: #2db842;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Список 1 -->
+        <div class="list-card">
+            <span class="list-title">44444</span>
+            <div class="controls">
+                <button class="btn-minus" onclick="changeValue(this, -1)">-</button>
+                <input type="number" value="0">
+                <button class="btn-plus" onclick="changeValue(this, 1)">+</button>
+            </div>
+        </div>
+
+        <!-- Список 2 -->
+        <div class="list-card">
+            <span class="list-title">44442</span>
+            <div class="controls">
+                <button class="btn-minus" onclick="changeValue(this, -1)">-</button>
+                <input type="number" value="0">
+                <button class="btn-plus" onclick="changeValue(this, 1)">+</button>
+            </div>
+        </div>
+
+        <!-- Список 3 -->
+        <div class="list-card">
+            <span class="list-title">Другой список</span>
+            <div class="controls">
+                <button class="btn-minus" onclick="changeValue(this, -1)">-</button>
+                <input type="number" value="0">
+                <button class="btn-plus" onclick="changeValue(this, 1)">+</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function changeValue(button, change) {
+            // Находим родительский блок (controls)
+            const controls = button.parentElement;
+            // Находим внутри него поле ввода (input)
+            const input = controls.querySelector('input');
+
+            // Получаем текущее значение
+            let currentValue = parseInt(input.value) || 0;
+
+            // Изменяем значение
+            currentValue += change;
+
+            // Записываем новое значение
+            input.value = currentValue;
+        }
+    </script>
+
+</body>
+
+</html>
